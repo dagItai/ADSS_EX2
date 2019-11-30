@@ -407,7 +407,8 @@ public class Main {
                                    // }
                                     numOfOrdered++;
                                     Order order = new Order(Integer.toString(numOfOrdered),new Date() ,null,wu.getCustomer().getAddress(),"waitForDelivery",10,wu.getCustomer().getAccount() );
-                                    LineItem li =  new LineItem(1,10,p,wu.getShoppingCart(),);
+
+                                    LineItem li =  new LineItem(1,10,p,wu.getShoppingCart(),order);
 
                                     System.out.println("the product "+productName +" successfully added to your cart, now you need to pay!");
                                 }

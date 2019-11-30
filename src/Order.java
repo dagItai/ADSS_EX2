@@ -388,7 +388,7 @@ public class Order
   {
     return super.toString() + "["+
             "number" + ":" + getNumber()+ "," +
-            "ship" + ":" + getShip()+ "," +
+
             "ship_to" + ":" + getShip_to()+ "," +
             "status" + ":" + getStatus()+ "," +
             "total" + ":" + getTotal()+ "]" + System.getProperties().getProperty("line.separator") +
