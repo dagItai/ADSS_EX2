@@ -229,7 +229,7 @@ public class Account
   /* Code from template association_AddManyToOne */
   public Order addOrder(String aNumber, Date aOrdered, Date aShipped, String aShip, String aShip_to, String aStatus, float aTotal)
   {
-    return new Order(aNumber, aOrdered, aShipped, aShip, aShip_to, aStatus, aTotal, this);
+    return new Order(aNumber, aOrdered, aShipped, aShip_to, aStatus, aTotal, this);
   }
 
   public boolean addOrder(Order aOrder)
