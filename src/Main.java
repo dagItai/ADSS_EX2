@@ -2,13 +2,14 @@ import javafx.util.Pair;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     private static HashSet<WebUser> webUsers = new HashSet<>();
     private static HashSet<Product> products = new HashSet<>();
     private static HashSet<Supplier> suppliers = new HashSet<>();
-
+    private static int numOfOrdered =0;
     public void mainmenu() throws Exception {
         Scanner input = new Scanner(System.in);
         while (true) {
@@ -21,7 +22,8 @@ public class Main {
                     Pair<String, String> login_details = printLoginMenu();
                     WebUser webUser = login(login_details.getKey(), login_details.getValue());
                     if (webUser != null) {
-
+                        /// yaara here functions for logged user
+                        functionsForLoggedUser(webUser);
                     } else {
                         System.out.println("login details are not matching, please try again or your account will be banned");
                         printMainMenu();
@@ -55,6 +57,7 @@ public class Main {
         for (WebUser webUser : webUsers) {
             if (webUser.getLogin_id().equals(userName) && webUser.getPassword().equals(password))
                 return webUser;
+
         }
         return null;
     }
@@ -114,6 +117,8 @@ public class Main {
         supplier.addProduct(bamba);
         suppliers.add(supplier);
         products.add(bamba);
+       ( (PremiumAccount) danaUser.getCustomer().getAccount() ).addProduct(bamba);
+        bamba.setPremiumAccount((PremiumAccount) danaUser.getCustomer().getAccount());
 
         Main m = new Main();
         m.mainmenu();
@@ -355,6 +360,76 @@ public class Main {
         WebUser newWebUser = setWebUser(id, password, state, address, phone, email, isClosed, openDate, closedDate, Integer.valueOf(balance), createdDate, false);
         webUsers.add(newWebUser);
         return true;
+    }
+
+    // logged user
+    private boolean functionsForLoggedUser(WebUser wu) {
+        int option = 0;
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("Successfully Logged-in!");
+        System.out.println("--------------");
+        while (true) {
+            System.out.println("1.View my last orders");
+            System.out.println("2.Add product to your shopping cart");
+            System.out.println("3.Pay on your cart");
+            System.out.println("4.Log out and return to main menu");
+            System.out.println("--------------");
+            System.out.println("Enter your choice:");
+            option = keyboard.nextInt();
+            switch (option) {
+                case 1:
+                    List<Order> myOrders = wu.getCustomer().getAccount().getOrders();
+                    if (myOrders.size() == 0) {// empty list
+                        System.out.println("Sorry, your list is empty");
+                        System.out.println("--------------");
+
+                    } else {
+                        System.out.println(myOrders.get(myOrders.size() - 1).toString());
+                        }
+                    continue;
+                case 2:
+                    String productName;
+                    Scanner keyboard1 = new Scanner(System.in);
+                    System.out.println("Please insert the product you would like to buy");
+                    productName = keyboard1.nextLine();
+                    if(products.contains(productName)){
+                        String premiumAccountName;
+                        Scanner keyboard2 = new Scanner(System.in);
+                        System.out.println("Please insert the Premium account ID you would like to buy from ");
+                        premiumAccountName = keyboard2.nextLine();
+                        for (Product p: products){ //check all the  products
+                            if (p.getName().compareTo(productName)==0){  // check if its bamba
+                                if (premiumAccountName.compareTo( ((Account) p.getPremiumAccount()).getId()) ==0){ // checks if this is the specific user who has bamba
+
+                                   // List<Product> accountProducts = p.getPremiumAccount().getProducts();
+                                   // for ( Product p2 : accountProducts){
+                                   //
+                                   // }
+                                    numOfOrdered++;
+                                    Order order = new Order(Integer.toString(numOfOrdered),new Date() ,null,wu.getCustomer().getAddress(),"waitForDelivery",10,wu.getCustomer().getAccount() );
+                                    LineItem li =  new LineItem(1,10,p,wu.getShoppingCart(),);
+
+                                    System.out.println("the product "+productName +" successfully added to your cart, now you need to pay!");
+                                }
+                            }
+                        }
+                    }
+                    else{
+                        System.out.println("Sorry,the product you wanted is missing");
+                        System.out.println("--------------");
+                    }
+
+                    continue;
+                case 3:
+
+
+                    continue;
+                case 4:
+                    printMainMenu();
+                default:
+                    System.out.println("Wrong choice");
+            }
+        }
     }
 
 }
