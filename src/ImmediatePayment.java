@@ -20,13 +20,19 @@ public class ImmediatePayment extends Payment
   // CONSTRUCTOR
   //------------------------
 
-  public ImmediatePayment(String aId, float aTotal, String aDetails, Order aOrder, boolean aPhoneConfirmation, Account... allAccounts)
+  public ImmediatePayment(String aId, float aTotal, String aDetails, Order aOrder, boolean aPhoneConfirmation, Account...allAccounts)
   {
     super(aId, aTotal, aDetails, aOrder, allAccounts);
     phoneConfirmation = aPhoneConfirmation;
   }
+    public ImmediatePayment(String aId, float aTotal, String aDetails, Order aOrder, boolean aPhoneConfirmation, Account account)
+    {
+        super(aId, aTotal, aDetails, aOrder, account);
+        phoneConfirmation = aPhoneConfirmation;
+    }
 
-  //------------------------
+
+    //------------------------
   // INTERFACE
   //------------------------
 

@@ -26,12 +26,14 @@ public class Payment
   // CONSTRUCTOR
   //------------------------
 
-  public Payment(String aId, float aTotal, String aDetails, Order aOrder, Account... allAccounts)
+  public Payment(String aId, float aTotal, String aDetails, Order aOrder, Account...allAccounts)
   {
     id = aId;
     total = aTotal;
     details = aDetails;
+
     accounts = new ArrayList<Account>();
+
     boolean didAddAccounts = setAccounts(allAccounts);
     if (!didAddAccounts)
     {
@@ -43,6 +45,16 @@ public class Payment
       throw new RuntimeException("Unable to create payment due to order. See http://manual.umple.org?RE002ViolationofAssociationMultiplicity.html");
     }
   }
+    public Payment(String aId, float aTotal, String aDetails, Order aOrder, Account account)
+    {
+        id = aId;
+        total = aTotal;
+        details = aDetails;
+
+        accounts = new ArrayList<Account>();
+        ((ArrayList) accounts).add(account);
+
+    }
 
   //------------------------
   // INTERFACE

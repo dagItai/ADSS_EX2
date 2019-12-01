@@ -386,7 +386,7 @@ public class Order
 
   public String toString()
   {
-    return super.toString() + "["+
+    return  "["+
             "number" + ":" + getNumber()+ "," +
 
             "ship_to" + ":" + getShip_to()+ "," +
