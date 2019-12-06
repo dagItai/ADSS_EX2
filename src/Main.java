@@ -370,7 +370,7 @@ public class Main {
         int option = 0;
         Scanner keyboard3 = new Scanner(System.in);
         System.out.println("Successfully Logged-in!");
-        System.out.println("--------------");
+
         while (true) {
             System.out.println("--------------");
             System.out.println("1.View my last orders");
