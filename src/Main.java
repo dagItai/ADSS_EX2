@@ -442,7 +442,7 @@ public class Main {
                                                 //ToDo partin payment?
                                                 break;
                                             } else {
-                                                System.out.println("Oops, your ordered deleted");
+                                                //System.out.println("Oops, your ordered deleted");
                                                 // delete all the details up
                                                 // delete order
                                                 order.delete();
@@ -450,7 +450,7 @@ public class Main {
                                                 // remove line number from : product, order, shopping card;
                                                 danaFor.addProduct(p);
                                                // p.setPremiumAccount(danaFor);
-                                                System.out.println("check");
+                                                //System.out.println("check");
                                                 break;
 
                                             }
