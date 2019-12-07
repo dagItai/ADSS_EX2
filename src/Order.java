@@ -18,7 +18,6 @@ public class Order
   private String number;
   private Date ordered;
   private Date shipped;
-  private String ship;
   private String ship_to;
   private String status;
   private float total;
@@ -32,12 +31,12 @@ public class Order
   // CONSTRUCTOR
   //------------------------
 
-  public Order(String aNumber, Date aOrdered, Date aShipped, String aShip, String aShip_to, String aStatus, float aTotal, Account aAccount)
+  public Order(String aNumber, Date aOrdered, Date aShipped, String aShip_to, String aStatus, float aTotal, Account aAccount)
   {
     number = aNumber;
     ordered = aOrdered;
     shipped = aShipped;
-    ship = aShip;
+
     ship_to = aShip_to;
     status = aStatus;
     total = aTotal;
@@ -78,13 +77,7 @@ public class Order
     return wasSet;
   }
 
-  public boolean setShip(String aShip)
-  {
-    boolean wasSet = false;
-    ship = aShip;
-    wasSet = true;
-    return wasSet;
-  }
+
 
   public boolean setShip_to(String aShip_to)
   {
@@ -125,10 +118,7 @@ public class Order
     return shipped;
   }
 
-  public String getShip()
-  {
-    return ship;
-  }
+
 
   public String getShip_to()
   {
@@ -396,9 +386,9 @@ public class Order
 
   public String toString()
   {
-    return super.toString() + "["+
+    return  "["+
             "number" + ":" + getNumber()+ "," +
-            "ship" + ":" + getShip()+ "," +
+
             "ship_to" + ":" + getShip_to()+ "," +
             "status" + ":" + getStatus()+ "," +
             "total" + ":" + getTotal()+ "]" + System.getProperties().getProperty("line.separator") +

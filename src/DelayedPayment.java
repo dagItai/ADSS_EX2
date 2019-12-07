@@ -26,7 +26,11 @@ public class DelayedPayment extends Payment
     super(aId, aTotal, aDetails, aOrder, allAccounts);
     payment_date = aPayment_date;
   }
-
+    public DelayedPayment(String aId, float aTotal, String aDetails, Order aOrder, Date aPayment_date, Account account)
+    {
+        super(aId, aTotal, aDetails, aOrder, account);
+        payment_date = aPayment_date;
+    }
   //------------------------
   // INTERFACE
   //------------------------
