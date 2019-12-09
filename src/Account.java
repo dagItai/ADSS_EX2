@@ -47,6 +47,7 @@ public class Account {
         shoppingCart = aShoppingCart;
         orders = new ArrayList<>();
         payments = new ArrayList<>();
+        partInPayment = new HashMap<>();
     }
 
     public Account(String aId, String aBilling_address, boolean aIs_closed, Date aOpen, Date aClosed, int aBalance, Date aCreatedForShoppingCart, WebUser aWebUserForShoppingCart) {
@@ -62,6 +63,7 @@ public class Account {
         aWebUserForShoppingCart.setShoppingCart(shoppingCart);
         orders = new ArrayList<>();
         payments = new ArrayList<>();
+        partInPayment = new HashMap<>();
     }
 
     //------------------------
